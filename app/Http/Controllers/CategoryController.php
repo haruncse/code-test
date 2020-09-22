@@ -34,25 +34,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //$category=new Category;
-        //dd($request->all());
-        /*$validatedData = $request->validate([
+        $validatedData = $request->validate([
             'name'=>'required|max:50',
             'status'=>'required'
-        ]);*/
+        ]);
 
-        //Category::create($request->all());
-        //return Response('Category Inserted',201);
-        $inputData=$request->all();
-
-        $categoryData=new Category;
-        $categoryData->name=$inputData['name'];
-        $categoryData->status=$inputData['status'];
-        $categoryData->save();
+        Category::create($request->all());
         return redirect('/category');
-        //dd("Category Created");
-        //return $categoryData;
-        //return back()->with('success','Item created successfully!')
     }
 
     /**

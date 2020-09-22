@@ -6,8 +6,18 @@
 		<div class="container col-md-6">
 			<div class="col-md-12" >
 				<h3 >Customer</h3>
-				<form action="/customer" method="post">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				@if (count($errors) > 0)
+					<div class="alert alert-danger">
+					<ul>
+					@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
+					</ul>
+					</div>
+				@endif
+				
+				<form action="/customer" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <div class="form-group">
 				    <label for="name">Name</label>
 				    <input type="text" class="form-control" name="name" id="name">
@@ -24,7 +34,7 @@
 				  </div>
 				   <div class="form-group">
 				    <label for="image">Image</label>
-				    <input type="file" class="form-control" name="image" id="image">
+				    <input type="file" class="btn btn-primary" name="image" id="image">
 				  </div>
 				  <button type="submit" class="btn btn-default">Submit</button>
 				</form>

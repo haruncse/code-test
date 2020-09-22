@@ -36,11 +36,14 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        //$file = Input::file('image');
+        dd($request->all());
+        $this->validate($request, [
+          'image'  => 'required|image|mimes:jpg,png,gif|max:2048'
+         ]);
+        $image = $request->file('image');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
         $inputData=$request->all();
-        //$file = $request->file($inputData['image']);
-        //dd($file);
+        dd($new_name);
         $randomid = rand(0,999);
         $customerName=$inputData['name'];
         //trim($customerName,$inputData['name']);
