@@ -34,17 +34,21 @@
 				</form>
 				
 			</div>
-
-			@foreach($product   as $key => $productItem)
-			   <form method="POST" action="/product/{{$productItem->id}}">
+			   
+	        <table class="table responsive">
+	        	<tr><th>Name</th><th>Qty</th><th>Price</th><th>Category</th><th>Action</th></tr>
+	        	@foreach($product   as $key => $productItem)
+	        	<form method="POST" action="/product/{{$productItem->id}}">
 			        {{ csrf_field() }}
 			        {{ method_field('DELETE') }}
-			        <label for="name">{{$productItem->name}}</label>
-			        <div class="form-group">
-			            <input type="submit" class="btn btn-danger delete-user" value="Delete user">
-			        </div>
-			    </form>
-			@endforeach
+		        	<tr><td>{{$productItem->name}}</td><td>{{$productItem->qty}}</td><td>{{$productItem->peice}}</td><td>{{$productItem->category_id}}</td>
+		            <td><input type="submit" class="btn btn-danger" value="Delete Product">
+		            </td>	
+		            </tr>
+		    	</form>
+				@endforeach
+	        </table>
+			     
 		</div>
 	</div>
 </div>

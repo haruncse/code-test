@@ -14,7 +14,39 @@
 		text-align: center;
 	}
 </style>
+<script type="text/javascript">
+	function categoryProductCheck(id) {
 
+		$.ajax({												
+			dataType:'json',
+			type:'POST',
+			url:'/check-category-product',	
+			data:{
+				'id':id,
+			},
+			success:function(result)
+			{			
+				console.log(result);
+				//return false;
+				if(result.length!=0)
+				{
+					var x = confirm("When category will delete those product "+JSON.stringify(result)+" will be deleted. Are you sure you want to delete?");
+					console.log(x);
+					return false;
+					if (x)
+						return true;
+					else
+						return false;
+				}
+			},
+			error: function( req, status, err ) 
+			{
+				console.log( 'wrong->', status, err );
+				alert(err);
+			}
+		});
+	}
+</script>
 <div class="container">
 	<div class="row">
 		<div class="container col-md-12">
@@ -64,7 +96,7 @@
 				@foreach($category   as $key => $categoryData)
 					<div class="col-md-12">
 
-					   <form class="col-md-12" method="POST" action="/category/{{$categoryData->id}}">
+					   <form class="col-md-12" method="POST" action="/category/{{$categoryData->id}}" onsubmit = "return categoryProductCheck('{{$categoryData->id}}')">
 					        {{ csrf_field() }}
 					        {{ method_field('DELETE') }}
 					        <label class="col-md-4" >{{$categoryData->name}}</label>
@@ -76,7 +108,7 @@
 					        	@endif
 					        </label>
 					        <div class="form-group col-md-4">
-					            <input type="submit" class="btn btn-danger delete-user" value="Delete user">
+					            <input type="submit" class="btn btn-danger delete-user" value="Delete Category">
 					        </div>
 					    </form>
 					</div>

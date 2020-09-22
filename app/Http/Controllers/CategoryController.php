@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Category;
+use App\Model\Product;
+use Illuminate\Support\Facades\Input;
 class CategoryController extends Controller
 {
     /**
@@ -85,8 +87,21 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        Product::select('name')
+        ->where('category_id', $id)
+        ->delete();
         $category=Category::findorfail($id);
         $category->delete();
         return redirect('/category');
+    }
+
+    public function CategoryWiseProductCheck()
+    {
+        $in=Input::all();
+        return Product::select('name')
+        ->where('category_id', $in['id'])
+        ->orderBy('name', 'desc')
+        ->get();
+
     }
 }
