@@ -12,8 +12,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('category.category');
+    {   
+        return view('category.category')->with('category',Category::all());
     }
 
     /**
@@ -49,7 +49,8 @@ class CategoryController extends Controller
         $categoryData->name=$inputData['name'];
         $categoryData->status=$inputData['status'];
         $categoryData->save();
-        dd("Category Created");
+        return redirect('/category');
+        //dd("Category Created");
         //return $categoryData;
         //return back()->with('success','Item created successfully!')
     }
@@ -96,6 +97,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category=Category::findorfail($id);
+        $category->delete();
+        return redirect('/category');
     }
 }

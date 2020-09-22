@@ -22,6 +22,16 @@
 				  <button type="submit" class="btn btn-default">Submit</button>
 				</form>
 			</div>
+			@foreach($category   as $key => $categoryData)
+			   <form method="POST" action="/category/{{$categoryData->id}}">
+			        {{ csrf_field() }}
+			        {{ method_field('DELETE') }}
+			        <label for="name">{{$categoryData->name}}</label>
+			        <div class="form-group">
+			            <input type="submit" class="btn btn-danger delete-user" value="Delete user">
+			        </div>
+			    </form>
+			@endforeach
 		</div>
 	</div>
 </div>
