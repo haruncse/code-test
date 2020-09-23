@@ -13,8 +13,14 @@ class CreateCustomerProductServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_product_services', function (Blueprint $table) {
+        Schema::create('customer_product_service', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('customer_id');
+            $table->integer('productID');
+            $table->integer('qty');
+            $table->integer('price');
+            $table->integer('discount');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

@@ -50,9 +50,10 @@
 <div class="container">
 	<div class="row">
 		<div class="container col-md-12">
+			<h3 >Create Category and Display</h3>
 			<div class="col-md-6">
 				<div class="col-md-12" >
-					<h3 >Create Category and Display</h3>
+					
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
 						<ul>
