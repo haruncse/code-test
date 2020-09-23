@@ -10,3 +10,7 @@ Route::post('/check-category-product','CategoryController@CategoryWiseProductChe
 Route::resource('/product','ProductController');
 Route::resource('/customer','CustomerController');
 Route::resource('/customer-product-service','CustomerProductServiceController');
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

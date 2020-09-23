@@ -86,6 +86,7 @@
                     <a href="/category">Category</a>
                     <a href="/product">Product</a>
                     <a href="/customer">Customer</a>
+                    <a href="/customer-product-service">Customer Product Service</a>
                 </div>
             </div>
         </div>
