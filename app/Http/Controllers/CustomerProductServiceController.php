@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Customer;
 use App\Model\Category;
 use App\Model\Product;
-use Illuminate\Support\Facades\Input;
-class CategoryController extends Controller
+
+class CustomerProductServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        return view('category.category')->with('category',Category::all());
+    {
+        return view('customer.customer-product-service')->with('customer',Customer::all())->with('product',Product::all())->with('category',Category::all());
     }
 
     /**
@@ -36,13 +37,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name'=>'required|unique:categories|max:50',
-            'status'=>'required'
-        ]);
-
-        Category::create($request->all());
-        return redirect('/category');
+        //
     }
 
     /**
@@ -87,21 +82,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Product::select('name')
-        ->where('category_id', $id)
-        ->delete();
-        $category=Category::findorfail($id);
-        $category->delete();
-        return redirect('/category');
-    }
-
-    public function CategoryWiseProductCheck()
-    {
-        $in=Input::all();
-        return Product::select('name')
-        ->where('category_id', $in['id'])
-        ->orderBy('name', 'desc')
-        ->get();
-
+        //
     }
 }

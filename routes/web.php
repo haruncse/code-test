@@ -9,3 +9,4 @@ Route::resource('/category','CategoryController');
 Route::post('/check-category-product','CategoryController@CategoryWiseProductCheck');
 Route::resource('/product','ProductController');
 Route::resource('/customer','CustomerController');
+Route::resource('/customer-product-service','CustomerProductServiceController');

@@ -38,13 +38,22 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $inputData=$request->all();
+       
+        $this->validate($request, [
+          'name'   =>'required|unique:products|max:30',
+          'category_id'  =>'required',
+          'qty' =>'required|numeric|min:0|not_in:0',
+          'price' =>'required|numeric|min:0|not_in:0'
+         ]);
 
+
+        //Product::create($request->all());
         $productData=new Product;
+        $inputData=$request->all();
         $productData->name=$inputData['name'];
         $productData->category_id=$inputData['category_id'];
         $productData->qty=$inputData['qty'];
-        $productData->peice=$inputData['price'];
+        $productData->price=$inputData['price'];
         $productData->save();
         //dd("Product Created");
         return redirect('/product');

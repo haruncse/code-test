@@ -6,6 +6,15 @@
 		<div class="container col-md-6">
 			<div class="col-md-12" >
 				<h3 >Product</h3>
+				@if (count($errors) > 0)
+					<div class="alert alert-danger">
+					<ul>
+					@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+					@endforeach
+					</ul>
+					</div>
+				@endif
 				<form action="/product" method="post">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				  <div class="form-group">
@@ -41,7 +50,7 @@
 	        	<form method="POST" action="/product/{{$productItem->id}}">
 			        {{ csrf_field() }}
 			        {{ method_field('DELETE') }}
-		        	<tr><td>{{$productItem->name}}</td><td>{{$productItem->qty}}</td><td>{{$productItem->peice}}</td><td>{{$productItem->category_id}}</td>
+		        	<tr><td>{{$productItem->name}}</td><td>{{$productItem->qty}}</td><td>{{$productItem->price}}</td><td>{{$productItem->category_id}}</td>
 		            <td><input type="submit" class="btn btn-danger" value="Delete Product">
 		            </td>	
 		            </tr>
