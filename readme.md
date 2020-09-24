@@ -17,5 +17,7 @@ Customer Creation
 ![Figure 4](https://github.com/haruncse/code-test/blob/master/4.jpg)
 
 
+Customer and Product Service
 
+![Figure 5](https://github.com/haruncse/code-test/blob/master/5.jpg)
 
