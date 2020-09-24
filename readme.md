@@ -12,3 +12,10 @@ Product Creation
 
 ![Figure 3](https://github.com/haruncse/code-test/blob/master/3.jpg)
 
+Customer Creation
+
+![Figure 4](https://github.com/haruncse/code-test/blob/master/4.jpg)
+
+
+
+
